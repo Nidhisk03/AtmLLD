@@ -1,6 +1,8 @@
 package atm;
 
 import dispenser.Dispense100;
+import dispenser.Dispense20;
+import dispenser.Dispense50;
 import dispenser.DispenserHandler;
 import entities.*;
 import state.ATMState;
@@ -19,8 +21,8 @@ public class ATMMachine {
     {
         this.currentState = new IdealState();
         DispenserHandler handler100 = new Dispense100(10);
-        DispenserHandler handler50 = new Dispense100(20);
-        DispenserHandler handler20 = new Dispense100(30);
+        DispenserHandler handler50 = new Dispense50(20);
+        DispenserHandler handler20 = new Dispense20(30);
         handler100.setNext(handler50);
         handler50.setNext(handler20);
         dispensor = new CashDispensor(handler100);
@@ -45,7 +47,7 @@ public class ATMMachine {
       currentState.selectOperation(atmMachine,operations,amount);
     }
     public void ejectCard(ATMMachine machine){
-      machine.ejectCard(machine);
+       currentState.ejectCard(machine);
     }
 
     public void withdraw(int amount){

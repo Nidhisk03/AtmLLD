@@ -25,9 +25,10 @@ void main() {
 
     machine.insertCard(machine,card);
     System.out.println(machine.getCurrentCard().getName());
-    //machine.enterPin("1234");
+    machine.enterPin("1234");
     //machine.selectOperation(machine, Operations.CHECK_BALANCE,500);
     //machine.selectOperation(machine, Operations.DEPOSIT_CASH,500);
+    machine.ejectCard(machine);
 
 
 
